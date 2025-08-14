@@ -5,7 +5,11 @@ export const footballApi = axios.create({
   baseURL: process.env.NEXT_PUBLIC_FOOTBALL_DATA_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY
+    'X-Auth-Token': process.env.NEXT_PUBLIC_FOOTBALL_DATA_API_KEY,
+    'X-Unfold-Lineups': true,
+    'X-Unfold-Bookings': true,
+    'X-Unfold-Subs': true,
+    'X-Unfold-Goals': true
   },
 })
 

@@ -1,25 +1,25 @@
 const API_ENDPOINTS = {
-    area: (id: string) => `/areas/${id}`,
+    area: (id: string | number) => `/areas/${id}`,
     areas: "/areas/",
 
     competition: (code: string) => `/competitions/${code}`,
     competitions: "/competitions",
 
-    competitionStandings: (id: string) => `/competitions/${id}/standings`,
-    competitionMatches: (id: string|number) => `/competitions/${id}/matches`,
-    competitionTeams: (id: string) => `/competitions/${id}/teams`,
-    competitionTopScorers: (id: string) => `/competitions/${id}/scorers`,
+    competitionStandings: (id: string | number) => `/competitions/${id}/standings`,
+    competitionMatches: (id: string | number) => `/competitions/${id}/matches`,
+    competitionTeams: (id: string | number) => `/competitions/${id}/teams`,
+    competitionTopScorers: (id: string | number) => `/competitions/${id}/scorers`,
 
-    team: (id: string) => `/teams/${id}`,
+    team: (id: string | number) => `/teams/${id}`,
     teams: "/teams/",
-    teamMatches: (id: string) => `/teams/${id}/matches/`,
+    teamMatches: (id: string | number) => `/teams/${id}/matches/`,
 
-    person: (id: string) => `/persons/${id}`,
-    personMatches: (id: string) => `/persons/${id}/matches`,
+    person: (id: string | number) => `/persons/${id}`,
+    personMatches: (id: string | number) => `/persons/${id}/matches`,
 
-    match: (id: string | number) => `/matches/${id}`,
+    match: (id: string | number | number) => `/matches/${id}`,
     matches: "/matches",
-    matchHead2Head: (id: string) => `/matches/${id}/head2head`
+    matchHead2Head: (id: string | number) => `/matches/${id}/head2head`
 };
 
 export default API_ENDPOINTS;
