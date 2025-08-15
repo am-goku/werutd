@@ -5,6 +5,7 @@ import { Competition } from "@/types/types";
 import { getCompetitionStandings } from "@/services/apis/localHandler";
 import { LeagueTableData } from "@/types/leagueInterface";
 import LeagueStats from "./leagueStats";
+import LeagueTableRow from "../ui/leagueTableRow";
 
 const seasons = ["2024/2025", "2023/2024", "2022/2023"];
 
@@ -69,7 +70,7 @@ const LeagueTable = ({ selectedLeague }: { selectedLeague: Competition | undefin
 
                     {/* TABLE SECTION */}
                     {view === "table" && (
-                        standings.length > 0 ? (
+                        standings.length > 1 ? (
                             standings.map((standing) => (
                                 <div key={standing.group} className="overflow-x-auto rounded-lg border mb-5 border-emerald-700">
                                     <table className="min-w-full divide-y divide-emerald-700">
@@ -148,7 +149,23 @@ const LeagueTable = ({ selectedLeague }: { selectedLeague: Competition | undefin
                                     </thead>
                                     <tbody className="divide-y divide-emerald-800 bg-emerald-950">
                                         {standings && standings[0]?.table?.map((row, idx) => (
-                                            <tr key={row.team.id || idx}>
+                                            // <tr key={row.team.id || idx}>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.position}</td>
+                                            //     <td className="px-4 py-2 flex items-center gap-2 text-sm text-emerald-50">
+                                            //         {/* eslint-disable-next-line @next/next/no-img-element */}
+                                            //         <img src={row.team.crest} alt={row.team.name} className="h-5 w-5" />
+                                            //         {row.team.shortName}
+                                            //     </td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.playedGames}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.won}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.draw}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.lost}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.goalsFor}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.goalsAgainst}</td>
+                                            //     <td className="px-4 py-2 text-sm text-emerald-50">{row.goalDifference}</td>
+                                            //     <td className="px-4 py-2 text-sm font-semibold text-emerald-100">{row.points}</td>
+                                            // </tr>
+                                            <LeagueTableRow t_id={row.team.id} l_code={selectedLeague?.code} position={idx} key={row.team.id || idx}>
                                                 <td className="px-4 py-2 text-sm text-emerald-50">{row.position}</td>
                                                 <td className="px-4 py-2 flex items-center gap-2 text-sm text-emerald-50">
                                                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -163,8 +180,7 @@ const LeagueTable = ({ selectedLeague }: { selectedLeague: Competition | undefin
                                                 <td className="px-4 py-2 text-sm text-emerald-50">{row.goalsAgainst}</td>
                                                 <td className="px-4 py-2 text-sm text-emerald-50">{row.goalDifference}</td>
                                                 <td className="px-4 py-2 text-sm font-semibold text-emerald-100">{row.points}</td>
-                                                {/* <td className="px-4 py-2">{renderFormDots(row.form)}</td> */}
-                                            </tr>
+                                            </LeagueTableRow>
                                         ))}
                                     </tbody>
                                 </table>
