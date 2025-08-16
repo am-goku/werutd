@@ -13,6 +13,22 @@ export const footballApi = axios.create({
   },
 })
 
+// Instance for TheSportsDB API version 1
+export const tsdbApi_v1 = axios.create({
+  baseURL: `${process.env.NEXT_PUBLIC_TSDB_BASE_URL}/v1/json/${process.env.NEXT_PUBLIC_TSDB_API_KEY}`,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+// Instance for TheSportsDB API version 2
+export const tsdbApi_v2 = axios.create({
+  baseURL: `${process.env.NEXT_PUBLIC_TSDB_BASE_URL}/v2/json/${process.env.NEXT_PUBLIC_TSDB_API_KEY}`,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
 // Instance for your own Next.js API routes
 export const localApi = axios.create({
   baseURL: '/api', // relative to Next.js app domain
